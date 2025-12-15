@@ -1,15 +1,25 @@
 import {defineCliConfig} from 'sanity/cli'
+import dotenv from "dotenv";
+import * as path from "node:path";
+
+dotenv.config();
 
 export default defineCliConfig({
   api: {
-    projectId: '5qsanux4',
-    dataset: 'production'
+    projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+    dataset: process.env.SANITY_STUDIO_DATASET,
   },
   deployment: {
-    /**
-     * Enable auto-updates for studios.
-     * Learn more at https://www.sanity.io/docs/cli#auto-updates
-     */
-    autoUpdates: true,
-  }
+    autoUpdates: false,
+  },
+  vite: (prev: any) => ({
+    ...prev,
+    resolve: {
+      ...(prev?.resolve ?? {}),
+      alias: {
+        ...((prev?.resolve as any)?.alias ?? {}),
+        "@": path.resolve(__dirname, "./"),
+      },
+    },
+  }),
 })
