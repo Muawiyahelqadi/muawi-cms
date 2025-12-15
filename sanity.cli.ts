@@ -1,4 +1,4 @@
-import {defineCliConfig} from 'sanity/cli'
+import { defineCliConfig } from "sanity/cli";
 import dotenv from "dotenv";
 import * as path from "node:path";
 
@@ -22,4 +22,4 @@ export default defineCliConfig({
       },
     },
   }),
-})
+});

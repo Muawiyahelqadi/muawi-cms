@@ -1,28 +1,32 @@
-import {defineField, defineType} from 'sanity'
-import {appendLanguageSubtitle, createSections, injectLanguage} from '@/utilities'
-import {widgetsName} from '@/components/home'
+import { defineField, defineType } from "sanity";
+import {
+  appendLanguageSubtitle,
+  createSections,
+  injectLanguage,
+} from "@/utilities";
+import { widgetsName } from "@/components/home";
 
 export default defineType({
-  name: 'home',
-  title: 'Home Page',
-  type: 'document',
+  name: "home",
+  title: "Home Page",
+  type: "document",
   fields: [
     defineField({
-      name: 'title',
-      title: 'Page Title',
-      type: 'string',
-      initialValue: 'Home Page',
+      name: "title",
+      title: "Page Title",
+      type: "string",
+      initialValue: "Home Page",
     }),
     injectLanguage(),
     createSections(widgetsName),
   ],
   preview: {
-    select: {title: 'title', language: 'language'},
-    prepare({title, language}) {
+    select: { title: "title", language: "language" },
+    prepare({ title, language }) {
       return {
-        title: title || 'Home Page',
+        title: title || "Home Page",
         subtitle: appendLanguageSubtitle(language),
-      }
+      };
     },
   },
-})
+});

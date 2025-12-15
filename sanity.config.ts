@@ -1,8 +1,8 @@
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
-import {documentInternationalization} from '@sanity/document-internationalization'
+import { defineConfig } from "sanity";
+import { structureTool } from "sanity/structure";
+import { visionTool } from "@sanity/vision";
+import { schemaTypes } from "./schemaTypes";
+import { documentInternationalization } from "@sanity/document-internationalization";
 
 export const LOCALES = [
   { id: "ar", title: "Arabic" },
@@ -10,7 +10,7 @@ export const LOCALES = [
 ];
 
 export default defineConfig({
-  name: 'default',
+  name: "default",
   title: process.env.SANITY_STUDIO_PROJECT_Name || "My Project",
   projectId: process.env.SANITY_STUDIO_PROJECT_ID || "",
   dataset: process.env.SANITY_STUDIO_DATASET || "",
@@ -27,4 +27,4 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
-})
+});

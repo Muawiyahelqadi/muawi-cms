@@ -1,1 +1,1 @@
-export const widgetsName = []
+export const widgetsName = [];

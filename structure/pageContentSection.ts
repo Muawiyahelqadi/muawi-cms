@@ -1,6 +1,6 @@
-import type {ListItemBuilder, StructureBuilder} from 'sanity/structure'
-import {DocumentTextIcon, BlockContentIcon} from '@sanity/icons'
-import {SingletonMeta} from '@/utilities'
+import type { ListItemBuilder, StructureBuilder } from "sanity/structure";
+import { DocumentTextIcon, BlockContentIcon } from "@sanity/icons";
+import { SingletonMeta } from "@/utilities";
 
 /**
  * To make it singleton-like, we can create list items for each schema type
@@ -15,12 +15,16 @@ export function createPageContentSection(
   pages: SingletonMeta[] = [],
 ): ListItemBuilder {
   return S.listItem()
-    .title('Page Content')
-    .id('pageContentSection')
+    .title("Page Content")
+    .id("pageContentSection")
     .icon(BlockContentIcon)
     .child(
       S.list()
-        .title('Page Content')
-        .items([...pages.map((s) => S.documentTypeListItem(s.schemaType).title(s.title))]),
-    )
+        .title("Page Content")
+        .items([
+          ...pages.map((s) =>
+            S.documentTypeListItem(s.schemaType).title(s.title),
+          ),
+        ]),
+    );
 }
