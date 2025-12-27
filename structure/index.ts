@@ -14,7 +14,8 @@ const pagesModules = import.meta.glob<
   eager: true,
 });
 
-export const pages = extractSchemas(pagesModules);
+const schemaPages = extractSchemas(pagesModules);
+export const schemaTypesName = schemaPages.map((s) => s.schemaType);
 
 export const structure: StructureResolver = (S, context) =>
   S.list()

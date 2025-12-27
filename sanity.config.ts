@@ -3,6 +3,9 @@ import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./schemaTypes";
 import { documentInternationalization } from "@sanity/document-internationalization";
+import { schemaTypesName } from "@/structure";
+import { linkField } from "sanity-plugin-link-field";
+import { colorInput } from "@sanity/color-input";
 
 export const LOCALES = [
   { id: "ar", title: "Arabic" },
@@ -18,9 +21,32 @@ export default defineConfig({
   plugins: [
     structureTool(),
     visionTool(),
+    colorInput(),
     documentInternationalization({
       supportedLanguages: [...LOCALES],
-      schemaTypes: [],
+      schemaTypes: [...schemaTypesName],
+    }),
+    linkField({
+      linkableSchemaTypes: [...schemaTypesName],
+      referenceFilterOptions: {
+        filter: ({ document }) => {
+          const currentLanguage = document?.language || document?.lang;
+          const defaultLanguage = "en";
+
+          if (currentLanguage) {
+            return {
+              filter: "language == $language || !defined(language)",
+              params: {
+                language: currentLanguage,
+                defaultLanguage: defaultLanguage,
+              },
+            };
+          }
+
+          // If no language is set, show all documents
+          return {};
+        },
+      },
     }),
   ],
 

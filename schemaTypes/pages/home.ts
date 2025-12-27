@@ -4,10 +4,10 @@ import {
   createSections,
   injectLanguage,
 } from "@/utilities";
-import { widgetsName } from "@/components/home";
+import { homeWidgetNames } from "@/schemaTypes/components/home";
 
 export default defineType({
-  name: "home",
+  name: "homePage",
   title: "Home Page",
   type: "document",
   fields: [
@@ -17,8 +17,8 @@ export default defineType({
       type: "string",
       initialValue: "Home Page",
     }),
+    createSections(homeWidgetNames),
     injectLanguage(),
-    createSections(widgetsName),
   ],
   preview: {
     select: { title: "title", language: "language" },
