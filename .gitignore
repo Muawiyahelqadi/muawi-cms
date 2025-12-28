@@ -28,3 +28,8 @@
 # Dotenv and similar local-only files
 *.local
 .idea/workspace.xml
+
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
