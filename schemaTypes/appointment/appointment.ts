@@ -7,56 +7,124 @@ export default defineType({
   fields: [
     defineField({
       name: "service",
+      title: "Service",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "date",
-      type: "date",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "datetime",
-      type: "datetime",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "fullName",
+      title: "Preferred Date",
       type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "name",
+      title: "Client Name",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "phone",
+      title: "Phone Number",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "email",
-      type: "email",
-    }),
-    defineField({
-      name: "phoneNumber",
+      title: "Email Address",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "message",
+      title: "Message",
       type: "text",
       rows: 4,
+    }),
+    defineField({
+      name: "status",
+      title: "Status",
+      type: "string",
+      options: {
+        list: [
+          { title: "Pending", value: "pending" },
+          { title: "Confirmed", value: "confirmed" },
+          { title: "Cancelled", value: "cancelled" },
+          { title: "Completed", value: "completed" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "pending",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "publishedAt",
-      title: "Published At",
+      name: "createdAt",
+      title: "Created At",
       type: "datetime",
-      initialValue: () => new Date().toISOString(),
-      validation: (Rule) => Rule.required(),
+      readOnly: true,
+    }),
+    defineField({
+      name: "submittedFrom",
+      title: "Submitted From IP",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
+    defineField({
+      name: "notes",
+      title: "Internal Notes",
+      type: "text",
+      description: "Private notes for staff only",
+      rows: 3,
+    }),
+    defineField({
+      name: "timeSpent",
+      type: "string",
+    }),
+    defineField({
+      name: "expectedPaymentAmount",
+      type: "string",
     }),
   ],
   preview: {
     select: {
-      fullName: "fullName",
-      phoneNumber: "phoneNumber",
+      name: "name",
+      service: "service",
+      date: "date",
+      status: "status",
     },
-    prepare({ fullName, phoneNumber }) {
+    prepare(selection) {
+      const { name, service, date, status } = selection;
+      const statusEmoji = {
+        pending: "⏳",
+        confirmed: "✅",
+        cancelled: "❌",
+        completed: "🎉",
+      };
+
       return {
-        title: fullName,
-        subtitle: phoneNumber,
+        title: `${name} - ${service}`,
+        subtitle: `${date} • ${statusEmoji[status as keyof typeof statusEmoji] || ""} ${status}`,
       };
     },
   },
+  orderings: [
+    {
+      title: "Date, New to Old",
+      name: "dateDesc",
+      by: [{ field: "createdAt", direction: "desc" }],
+    },
+    {
+      title: "Date, Old to New",
+      name: "dateAsc",
+      by: [{ field: "createdAt", direction: "asc" }],
+    },
+    {
+      title: "Status",
+      name: "status",
+      by: [
+        { field: "status", direction: "asc" },
+        { field: "createdAt", direction: "desc" },
+      ],
+    },
+  ],
 });
