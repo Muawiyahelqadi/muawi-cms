@@ -1,5 +1,5 @@
 import type { ListItemBuilder, StructureBuilder } from "sanity/structure";
-import { DocumentTextIcon, BlockContentIcon } from "@sanity/icons";
+import { BlockContentIcon } from "@sanity/icons";
 import { SingletonMeta } from "@/utilities";
 
 /**

@@ -1,6 +1,7 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
 import { appendLanguageSubtitle, injectLanguage } from "@/utilities";
 import { LinkIcon } from "@sanity/icons";
+import iconsField from "@/schemaTypes/fields/iconsField";
 
 export default defineType({
   name: "header",
@@ -34,6 +35,7 @@ export default defineType({
               type: "string",
               validation: (r) => r.required(),
             }),
+            iconsField,
             defineField({
               name: "url",
               type: "url",

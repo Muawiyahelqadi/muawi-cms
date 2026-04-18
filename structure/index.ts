@@ -1,5 +1,5 @@
 import { extractSchemas } from "@/utilities";
-import type { StructureBuilder, StructureResolver } from "sanity/structure";
+import type { StructureResolver } from "sanity/structure";
 import { createPageContentSection } from "@/structure/pageContentSection";
 
 const pagesModules = import.meta.glob<
