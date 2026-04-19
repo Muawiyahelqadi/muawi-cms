@@ -18,10 +18,10 @@ export default defineType({
       validation: (Rule) => Rule.required().email(),
     }),
     defineField({
-      name: "passwordHash",
-      title: "Password Hash",
+      name: "password",
+      title: "Password",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().min(6),
     }),
     defineField({
       name: "role",
