@@ -256,6 +256,10 @@ const DEFAULT_TRANSLATIONS: Record<string, { en: string; ar: string }> = {
     en: "Failed to update appointment",
     ar: "فشل في تحديث الموعد. يرجى المحاولة مرة أخرى.",
   },
+  logout: {
+    en: "Logout",
+    ar: "تسجيل الخروج",
+  },
 };
 
 // Build initialValue entries array from the defaults
