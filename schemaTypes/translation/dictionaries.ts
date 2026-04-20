@@ -260,6 +260,83 @@ const DEFAULT_TRANSLATIONS: Record<string, { en: string; ar: string }> = {
     en: "Logout",
     ar: "تسجيل الخروج",
   },
+  // Sign In
+  sign_in_welcome: {
+    en: "Welcome Back",
+    ar: "مرحباً بعودتك",
+  },
+  sign_in_subtitle: {
+    en: "Sign in to your account",
+    ar: "سجّل الدخول إلى حسابك",
+  },
+  password: {
+    en: "Password",
+    ar: "كلمة المرور",
+  },
+  forgot_password: {
+    en: "Forgot your password?",
+    ar: "نسيت كلمة المرور؟",
+  },
+  signing_in: {
+    en: "Signing in...",
+    ar: "جاري تسجيل الدخول...",
+  },
+  sign_in: {
+    en: "Sign In",
+    ar: "تسجيل الدخول",
+  },
+  sign_in_error: {
+    en: "An error occurred. Please try again.",
+    ar: "حدث خطأ. يرجى المحاولة مرة أخرى.",
+  },
+  forgot_password_title: {
+    en: "Forgot Password",
+    ar: "نسيت كلمة المرور",
+  },
+  forgot_password_subtitle: {
+    en: "We'll send you a reset link",
+    ar: "سنرسل لك رابط إعادة تعيين",
+  },
+  forgot_password_success: {
+    en: "Check your email for a reset link.",
+    ar: "تحقق من بريدك الإلكتروني للحصول على رابط إعادة التعيين.",
+  },
+  sending: {
+    en: "Sending...",
+    ar: "جاري الإرسال...",
+  },
+  send_reset_link: {
+    en: "Send Reset Link",
+    ar: "إرسال رابط إعادة التعيين",
+  },
+  back_to_sign_in: {
+    en: "Back to Sign In",
+    ar: "العودة إلى تسجيل الدخول",
+  },
+  something_went_wrong: {
+    en: "Something went wrong.",
+    ar: "حدث خطأ ما.",
+  },
+  reset_password_title: {
+    en: "Reset Password",
+    ar: "إعادة تعيين كلمة المرور",
+  },
+  new_password: {
+    en: "New Password",
+    ar: "كلمة المرور الجديدة",
+  },
+  reset_password_success: {
+    en: "Password reset! Redirecting to Sign In...",
+    ar: "تم إعادة تعيين كلمة المرور! جارٍ تحويلك إلى تسجيل الدخول...",
+  },
+  resetting: {
+    en: "Resetting...",
+    ar: "جاري إعادة التعيين...",
+  },
+  reset_password: {
+    en: "Reset Password",
+    ar: "إعادة تعيين كلمة المرور",
+  },
 };
 
 // Build initialValue entries array from the defaults
