@@ -9,7 +9,7 @@ export default defineCliConfig({
     projectId: process.env.SANITY_STUDIO_PROJECT_ID,
     dataset: process.env.SANITY_STUDIO_DATASET,
   },
-  studioHost:process.env.SANITY_STUDIO_HOST_NAME,
+  studioHost: process.env.SANITY_STUDIO_HOSTNAME,
   deployment: {
     autoUpdates: false,
   },
